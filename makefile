@@ -7,7 +7,7 @@ openocd_bluepill_cfg ?= $(openocd_dir)openocd/scripts/board/stm32f103c8_blue_pil
 CFLAGS  ?= -mcpu=cortex-m3
 LDFLAGS ?= -Tlink.ld -nostartfiles -nostdlib --specs nosys.specs -Wl,-Map=$@.map
 SOURCES = main.c
-INC_DIR = ./cmsis/
+INC_DIR = ./mcal/cmsis/
 OUT_DIR = ./_out/
 
 ELF := $(OUT_DIR)firmware.elf
