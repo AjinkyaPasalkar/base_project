@@ -1,4 +1,5 @@
 #include "stm32f103xb.h"
+#include "port.h"
 
 void delay(void);
 
@@ -8,8 +9,7 @@ int main(void)
     // RCC_APB2ENR.IOPC (bit4) = 1
     RCC->APB2ENR |= RCC_APB2ENR_IOPCEN;
     //init GPIO PC13
-    GPIOC->CRH |= GPIO_CRH_MODE13_1;    //Set as output
-    GPIOC->CRH &= ~GPIO_CRH_CNF13;      // General purpose push pull
+    port_pinMode(GPIOC, 13, output);
     
     
     while(1)

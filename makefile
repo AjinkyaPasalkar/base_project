@@ -6,21 +6,23 @@ openocd_bluepill_cfg ?= $(openocd_dir)openocd/scripts/board/stm32f103c8_blue_pil
 
 CFLAGS  ?= -mcpu=cortex-m3
 LDFLAGS ?= -Tlink.ld -nostartfiles -nostdlib --specs nosys.specs -Wl,-Map=$@.map
-SOURCES = main.c
-INC_DIR = ./mcal/cmsis/
+SOURCES += main.c
+SOURCES += ./mcal/port/port.c
+INC_DIR += ./mcal/cmsis/
+INC_DIR += -I./mcal/port/
 OUT_DIR = ./_out/
 
 ELF := $(OUT_DIR)firmware.elf
 BIN := $(OUT_DIR)firmware.bin
 
-.PHONY: all
+.PHONY: all build clean objdump flash
 
 all: build
 
 build: $(BIN)
 
 $(BIN): $(ELF)
-	arm-none-eabi-objcopy -O binary $< $@
+	arm-none-eabi-objcopy -O binary $^ $@
 
 $(ELF): $(SOURCES)
 	mkdir $(OUT_DIR)
