@@ -49,7 +49,7 @@ typedef struct
     port_speed speed;
 } pin_config_t;
 
-unsigned char port_pinMode(GPIO_TypeDef * port, unsigned char pin, port_pin_dir dir);
+uint8_t port_pinMode(GPIO_TypeDef * port, uint8_t pin, port_pin_dir dir);
 
 #endif /* PORT_H */
 

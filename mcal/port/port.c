@@ -11,9 +11,20 @@
  *
  * @return Success:0, Fail:1
  */
-unsigned char port_pinMode(GPIO_TypeDef * port, unsigned char pin, port_pin_dir dir)
+uint8_t port_pinMode(GPIO_TypeDef * port, uint8_t pin, port_pin_dir dir)
 {
-    unsigned char ret = 1;
+    volatile uint32_t *ptr_reg; // Port configuration register address
+    
+    if (pin > 15)
+    {
+        return 1;
+    }
+    
+    // if pin<8 then use CRL. if pin>8 then use CRH
+    ptr_reg = &(port->CRL) + (pin >> 3);
+    
+    // if pin > 8 then pin -= 8
+    pin &= 7;
     
     if (dir == input)
     {
@@ -21,28 +32,20 @@ unsigned char port_pinMode(GPIO_TypeDef * port, unsigned char pin, port_pin_dir 
     }
     else if (dir == output)
     {
-        if (pin < 8)
-        {
-            
-        }
-        else
-        {
-            pin -= 8;
-            // Set MODE = 10b --> Output mode, max speed 2 MHz
-            port->CRH &= ~(0x3 << (pin * 4));
-            port->CRH |= 0x2 << (pin * 4);
-            
-            // Set CNF = 01b --> General purpose output push pull
-            port->CRH &= ~(0x3 << ((pin * 4) + 2));
-            port->CRH |= 0x1 << ((pin * 4) + 2);
-        }
+       // Set MODE = 10b --> Output mode, max speed 2 MHz
+       *ptr_reg &= ~(0x3 << (pin * 4));
+       *ptr_reg |=   0x2 << (pin * 4) ;
+       
+       // Set CNF = 01b --> General purpose output, push pull
+       *ptr_reg &= ~(0x3 << ((pin * 4) + 2));
+       *ptr_reg |=   0x1 << ((pin * 4) + 2) ;
     }
     else
     {
         
     }
 
-    return ret;    
+    return 0;    
 }
 
 /*** end of file ***/
