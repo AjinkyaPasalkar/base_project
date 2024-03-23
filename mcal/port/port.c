@@ -28,7 +28,12 @@ uint8_t port_pinMode(GPIO_TypeDef * port, uint8_t pin, port_pin_dir dir)
     
     if (dir == input)
     {
-        
+        // Set MODE = 00b --> Input mode
+       *ptr_reg &= ~(0x3 << (pin * 4));
+       
+       // Set CNF = 01b --> Floating input
+       *ptr_reg &= ~(0x3 << ((pin * 4) + 2));
+       *ptr_reg |=   0x1 << ((pin * 4) + 2) ;
     }
     else if (dir == output)
     {
@@ -42,7 +47,8 @@ uint8_t port_pinMode(GPIO_TypeDef * port, uint8_t pin, port_pin_dir dir)
     }
     else
     {
-        
+        // Invalid pin direction
+        return 1;
     }
 
     return 0;    
