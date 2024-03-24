@@ -15,10 +15,9 @@ int main(void)
     while(1)
     {
         // blink led
-        ;
-        GPIOC->BSRR = GPIO_BSRR_BS13;
+        port_pinWrite(GPIOC, 13, HIGH);
         delay();
-        GPIOC->BSRR = GPIO_BSRR_BR13;
+        port_pinWrite(GPIOC, 13, LOW);
         delay();
     }
     

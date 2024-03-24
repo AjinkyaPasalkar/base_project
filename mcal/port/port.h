@@ -39,6 +39,12 @@ typedef enum mode_e
     max_output_speed_50MHz
 }port_speed;
 
+typedef enum pin_state_e
+{
+    LOW,
+    HIGH
+}pin_state;
+
 typedef struct
 {
     GPIO_TypeDef * port;
@@ -50,6 +56,7 @@ typedef struct
 } pin_config_t;
 
 uint8_t port_pinMode(GPIO_TypeDef * port, uint8_t pin, port_pin_dir dir);
+uint8_t port_pinWrite(GPIO_TypeDef * port, uint8_t pin, pin_state state);
 
 #endif /* PORT_H */
 

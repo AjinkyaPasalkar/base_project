@@ -54,4 +54,21 @@ uint8_t port_pinMode(GPIO_TypeDef * port, uint8_t pin, port_pin_dir dir)
     return 0;    
 }
 
+/*!
+ * @brief Write to pin
+ *
+ * @return Success:0, Fail:1
+ */
+uint8_t port_pinWrite(GPIO_TypeDef * port, uint8_t pin, pin_state state)
+{
+    if (pin > 15 || state > 1)
+    {
+        return 1;
+    }
+
+    port->BSRR = 1 << (pin + (0x10 * !state));
+    
+    return 0;
+}
+
 /*** end of file ***/
