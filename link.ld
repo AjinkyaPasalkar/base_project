@@ -6,9 +6,17 @@ MEMORY {
 _estack     = ORIGIN(sram) + LENGTH(sram);    /* stack points to end of SRAM */
 
 SECTIONS {
-  .vectors  : { KEEP(*(.vectors)) }   > flash
-  .text     : { *(.text*) }           > flash
-  .rodata   : { *(.rodata*) }         > flash
+  .vectors : {
+    KEEP(*(.vectors))
+  } > flash
+
+  .text : {
+    *(.text*)
+  } > flash
+
+  .rodata : {
+    *(.rodata*)
+  } > flash
 
   .data : {
     _sdata = .;   /* .data section start */
