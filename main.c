@@ -1,13 +1,12 @@
 #include "stm32f103xb.h"
 #include "port.h"
+#include "Clock.h"
 
 void delay(void);
 
 int main(void)
 {
-    // init RCC
-    // RCC_APB2ENR.IOPC (bit4) = 1
-    RCC->APB2ENR |= RCC_APB2ENR_IOPCEN;
+    Clock_Init(&Clock_Config);
     //init GPIO PC13
     port_pinMode(GPIOC, 13, output);
     
