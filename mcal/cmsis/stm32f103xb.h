@@ -323,20 +323,6 @@ typedef struct
   __IO uint16_t WRP3;
 } OB_TypeDef;
 
-/** 
-  * @brief General Purpose I/O
-  */
-
-typedef struct
-{
-  __IO uint32_t CRL;
-  __IO uint32_t CRH;
-  __IO uint32_t IDR;
-  __IO uint32_t ODR;
-  __IO uint32_t BSRR;
-  __IO uint32_t BRR;
-  __IO uint32_t LCKR;
-} GPIO_TypeDef;
 
 /** 
   * @brief Alternate Function I/O
@@ -547,11 +533,6 @@ typedef struct
 #define PWR                 ((PWR_TypeDef *)PWR_BASE)
 #define AFIO                ((AFIO_TypeDef *)AFIO_BASE)
 #define EXTI                ((EXTI_TypeDef *)EXTI_BASE)
-#define GPIOA               ((GPIO_TypeDef *)GPIOA_BASE)
-#define GPIOB               ((GPIO_TypeDef *)GPIOB_BASE)
-#define GPIOC               ((GPIO_TypeDef *)GPIOC_BASE)
-#define GPIOD               ((GPIO_TypeDef *)GPIOD_BASE)
-#define GPIOE               ((GPIO_TypeDef *)GPIOE_BASE)
 #define ADC1                ((ADC_TypeDef *)ADC1_BASE)
 #define ADC2                ((ADC_TypeDef *)ADC2_BASE)
 #define ADC12_COMMON        ((ADC_Common_TypeDef *)ADC1_BASE)

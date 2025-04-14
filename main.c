@@ -1,25 +1,24 @@
 #include "stm32f103xb.h"
-#include "port.h"
 #include "Clock.h"
+#include "Port.h"
 
 void delay(void);
 
 int main(void)
 {
     Clock_Init(&Clock_Config);
-    //init GPIO PC13
-    port_pinMode(GPIOC, 13, output);
-    
-    
+    Port_Init(&Port_Config);
+
+
     while(1)
     {
         // blink led
-        port_pinWrite(GPIOC, 13, HIGH);
+        //port_pinWrite(GPIOC, 13, HIGH);
         delay();
-        port_pinWrite(GPIOC, 13, LOW);
+        //port_pinWrite(GPIOC, 13, LOW);
         delay();
     }
-    
+
     return 0;
 }
 

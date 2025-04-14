@@ -6,15 +6,18 @@ openocd_bluepill_cfg ?= $(openocd_dir)openocd/scripts/board/stm32f103c8_blue_pil
 
 CFLAGS  ?= -mcpu=cortex-m3
 LDFLAGS ?= -Tlink.ld -nostartfiles -nostdlib --specs nosys.specs -Wl,-Map=$@.map
+
 SOURCES += main.c
-SOURCES += ./mcal/port/port.c
 SOURCES += ./mcal/static/Clock.c
 SOURCES += ./mcal/config/Clock_Cfg.c
+SOURCES += ./mcal/static/Port.c
+SOURCES += ./mcal/config/Port_Cfg.c
+
 INC_DIR += ./mcal/cmsis/
-INC_DIR += -I./mcal/port/
 INC_DIR += -I./mcal/reg/
 INC_DIR += -I./mcal/static/
 INC_DIR += -I./mcal/config/
+
 OUT_DIR = ./_out/
 
 ELF := $(OUT_DIR)firmware.elf

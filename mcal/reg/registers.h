@@ -1,8 +1,8 @@
 /** @file registers.h
- * 
+ *
  * @brief Information regarding STM32F108 uC
  *
- */ 
+ */
 
 #ifndef __REGISTERS_H
 #define __REGISTERS_H
@@ -82,13 +82,17 @@
 
 /** @addtogroup Peripheral_declaration
   * @{
-  */  
+  */
 
 #define RCC                 ((RCC_TypeDef *)RCC_BASE)
+#define GPIOA               ((GPIO_TypeDef *)GPIOA_BASE)
+#define GPIOB               ((GPIO_TypeDef *)GPIOB_BASE)
+#define GPIOC               ((GPIO_TypeDef *)GPIOC_BASE)
+#define GPIOD               ((GPIO_TypeDef *)GPIOD_BASE)
+#define GPIOE               ((GPIO_TypeDef *)GPIOE_BASE)
 
 
-
-/** 
+/**
   * @brief Reset and Clock Control
   */
 
@@ -106,5 +110,19 @@ typedef struct
   volatile unsigned int CSR;
 } RCC_TypeDef;
 
+/**
+  * @brief General Purpose I/O
+  */
+
+typedef struct
+{
+  volatile unsigned int CRL;
+  volatile unsigned int CRH;
+  volatile unsigned int IDR;
+  volatile unsigned int ODR;
+  volatile unsigned int BSRR;
+  volatile unsigned int BRR;
+  volatile unsigned int LCKR;
+} GPIO_TypeDef;
 
 #endif
