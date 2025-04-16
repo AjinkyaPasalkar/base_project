@@ -12,6 +12,8 @@ SOURCES += ./mcal/static/Clock.c
 SOURCES += ./mcal/config/Clock_Cfg.c
 SOURCES += ./mcal/static/Port.c
 SOURCES += ./mcal/config/Port_Cfg.c
+SOURCES += ./mcal/static/Dio.c
+SOURCES += ./mcal/config/Dio_Cfg.c
 
 INC_DIR += ./mcal/cmsis/
 INC_DIR += -I./mcal/reg/

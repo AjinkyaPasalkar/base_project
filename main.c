@@ -1,6 +1,7 @@
 #include "stm32f103xb.h"
 #include "Clock.h"
 #include "Port.h"
+#include "Dio.h"
 
 void delay(void);
 
@@ -13,9 +14,9 @@ int main(void)
     while(1)
     {
         // blink led
-        //port_pinWrite(GPIOC, 13, HIGH);
+        Dio_WritePin(LED, HIGH);
         delay();
-        //port_pinWrite(GPIOC, 13, LOW);
+        Dio_WritePin(LED, LOW);
         delay();
     }
 
