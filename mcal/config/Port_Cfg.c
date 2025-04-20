@@ -66,7 +66,7 @@ const Port_Config_t Port_Config =
         PORT_INPUT_PULLDOWN,        /* PIN 10 */
         PORT_INPUT_PULLDOWN,        /* PIN 11 */
         PORT_INPUT_PULLDOWN,        /* PIN 12 */
-        PORT_INPUT_PULLDOWN,        /* PIN 13 */
+        PORT_OUTPUT_PUSHPULL,       /* PIN 13 */
         PORT_INPUT_PULLDOWN,        /* PIN 14 */
         PORT_INPUT_PULLDOWN         /* PIN 15 */
     },

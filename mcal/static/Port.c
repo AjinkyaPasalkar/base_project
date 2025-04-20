@@ -29,6 +29,7 @@ static void lPort_SetMode(GPIO_TypeDef * port, unsigned char pin, Port_Mode_t mo
     }
     else
     {
+        pin -= 8;
         ptr_reg = &(port->CRH);
     }
 
