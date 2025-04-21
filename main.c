@@ -1,4 +1,3 @@
-#include "stm32f103xb.h"
 #include "Clock.h"
 #include "Port.h"
 #include "Dio.h"

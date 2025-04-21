@@ -15,7 +15,6 @@ SOURCES += ./mcal/config/Port_Cfg.c
 SOURCES += ./mcal/static/Dio.c
 SOURCES += ./mcal/config/Dio_Cfg.c
 
-INC_DIR += ./mcal/cmsis/
 INC_DIR += -I./mcal/reg/
 INC_DIR += -I./mcal/static/
 INC_DIR += -I./mcal/config/
@@ -36,7 +35,7 @@ $(BIN): $(ELF)
 
 $(ELF): $(SOURCES)
 	mkdir $(OUT_DIR)
-	arm-none-eabi-gcc $(SOURCES) $(CFLAGS) $(LDFLAGS) -o $@ -I$(INC_DIR)
+	arm-none-eabi-gcc $(SOURCES) $(CFLAGS) $(LDFLAGS) -o $@ $(INC_DIR)
 
 objdump: $(ELF)
 	arm-none-eabi-objdump -x $^
