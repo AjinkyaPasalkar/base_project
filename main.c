@@ -1,6 +1,7 @@
 #include "Clock.h"
 #include "Port.h"
 #include "Dio.h"
+#include "Adc.h"
 
 void delay(void);
 
@@ -8,6 +9,7 @@ int main(void)
 {
     Clock_Init(&Clock_Config);
     Port_Init(&Port_Config);
+    Adc_Init(&Adc_Config);
 
 
     while(1)

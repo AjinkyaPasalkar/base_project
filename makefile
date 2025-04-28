@@ -12,10 +12,12 @@ SOURCES += main.c
 SOURCES += ./mcal/static/Clock.c
 SOURCES += ./mcal/static/Port.c
 SOURCES += ./mcal/static/Dio.c
+SOURCES += ./mcal/static/Adc.c
 
 SOURCES += ./mcal/config/Clock_Cfg.c
 SOURCES += ./mcal/config/Port_Cfg.c
 SOURCES += ./mcal/config/Dio_Cfg.c
+SOURCES += ./mcal/config/Adc_Cfg.c
 
 INC_DIR += -I./mcal/reg/
 INC_DIR += -I./mcal/static/

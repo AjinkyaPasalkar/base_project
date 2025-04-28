@@ -90,6 +90,9 @@
 #define GPIOC               ((GPIO_TypeDef *)GPIOC_BASE)
 #define GPIOD               ((GPIO_TypeDef *)GPIOD_BASE)
 #define GPIOE               ((GPIO_TypeDef *)GPIOE_BASE)
+#define ADC1                ((ADC_TypeDef *)ADC1_BASE)
+#define ADC2                ((ADC_TypeDef *)ADC2_BASE)
+#define ADC12_COMMON        ((ADC_Common_TypeDef *)ADC1_BASE)
 
 
 /**
@@ -124,5 +127,42 @@ typedef struct
   volatile unsigned int BRR;
   volatile unsigned int LCKR;
 } GPIO_TypeDef;
+
+/** 
+  * @brief Analog to Digital Converter  
+  */
+
+typedef struct
+{
+ volatile unsigned int SR;
+ volatile unsigned int CR1;
+ volatile unsigned int CR2;
+ volatile unsigned int SMPR1;
+ volatile unsigned int SMPR2;
+ volatile unsigned int JOFR1;
+ volatile unsigned int JOFR2;
+ volatile unsigned int JOFR3;
+ volatile unsigned int JOFR4;
+ volatile unsigned int HTR;
+ volatile unsigned int LTR;
+ volatile unsigned int SQR1;
+ volatile unsigned int SQR2;
+ volatile unsigned int SQR3;
+ volatile unsigned int JSQR;
+ volatile unsigned int JDR1;
+ volatile unsigned int JDR2;
+ volatile unsigned int JDR3;
+ volatile unsigned int JDR4;
+ volatile unsigned int DR;
+} ADC_TypeDef;
+
+typedef struct
+{
+  volatile unsigned int SR;               /*!< ADC status register,    used for ADC multimode (bits common to several ADC instances). Address offset: ADC1 base address         */
+  volatile unsigned int CR1;              /*!< ADC control register 1, used for ADC multimode (bits common to several ADC instances). Address offset: ADC1 base address + 0x04  */
+  volatile unsigned int CR2;              /*!< ADC control register 2, used for ADC multimode (bits common to several ADC instances). Address offset: ADC1 base address + 0x08  */
+  unsigned int  RESERVED[16];
+  volatile unsigned int DR;               /*!< ADC data register,      used for ADC multimode (bits common to several ADC instances). Address offset: ADC1 base address + 0x4C  */
+} ADC_Common_TypeDef;
 
 #endif
